@@ -1,0 +1,14 @@
+import pandas as pd
+data=pd.read_csv('Titanic.csv')
+from sklearn.impute import SimpleImputer
+from sklearn.pipeline import Pipeline
+X=data.select_dtypes(include=['number']).columns
+y= data.select_dtypes(include=['object']).columns
+pipeline=Pipeline([
+    ('imputer',SimpleImputer(strategy='most_frequent'))
+])
+
+data[X]=pipeline.fit_transform(data[X])
+data[y]=pipeline.fit_transform(data[y])
+data.to_csv('final.csv')
+data
