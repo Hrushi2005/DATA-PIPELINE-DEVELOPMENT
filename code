@@ -1,5 +1,5 @@
 import pandas as pd
-data=pd.read_csv('Titanic.csv')
+data=pd.read_csv('Titanic-Dataset.csv')
 from sklearn.impute import SimpleImputer
 from sklearn.pipeline import Pipeline
 X=data.select_dtypes(include=['number']).columns
